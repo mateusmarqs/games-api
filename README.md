@@ -106,7 +106,7 @@ HTTP Status Code: 200 OK
 
 > DEL /game/:id
 
-Esse endpoint é respónsavel por atualizar um game presente no database.
+Esse endpoint é respónsavel por deletar um game presente no database.
 
 Parametros:
 ~~~javascript
