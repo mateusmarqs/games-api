@@ -1,0 +1,27 @@
+{
+  "name": "games-api",
+  "version": "1.0.0",
+  "description": "API desenvolvida para simular uma plataforma de e-mail. Com o intuito principal de trabalhar com WebSockets.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mateusmarqs/games-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mateusmarqs/games-api/issues"
+  },
+  "homepage": "https://github.com/mateusmarqs/games-api#readme",
+  "dependencies": {
+    "express": "^4.17.2",
+    "mongoose": "^6.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
