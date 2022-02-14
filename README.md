@@ -1,12 +1,33 @@
 # API de Games
 
-Essa APi é utilizada para uma loga de jogos com banco de dados falso.
+Essa é uma API construida utilizando Express.js. Ela foi utilizada para manipular um banco de dados MongoDB, no qual armazena dados de uma loja de games.
 
 ## Endpoints
 
+> POST /games
+
+Esse endpoint é respónsavel por cadastrar um novo game.
+
+Parametros:
+~~~javascript
+{
+	"title": "Battlefield 4",
+	"year": "2012",
+	"price": "50",
+	"category": "Ação"
+}
+~~~
+
+Exemplo de respostas:
+~~~javascript
+[
+   HTTP Status Code: 200 OK
+]
+~~~
+
 > GET /games
 
-Esse endpoint é respónsavel por retornar a listagem de todos os jogos cadastrados no banco de dados.
+Esse endpoint é respónsavel para pegar todos os games presentes no database.
 
 Parametros:
 ~~~javascript
@@ -14,45 +35,88 @@ None
 ~~~
 
 Exemplo de respostas:
+
 ~~~javascript
 [
-  {
-    "id": 65,
-    "title": "Sea of Thieves",
-    "year": "2018",
-    "price": "80"
-  },
-  {
-    "id": 23,
-    "title": "Minecraft",
-    "year": 2012,
-    "price": 20
-  }
+	{
+		"_id": "620ac7d610540f788682441f",
+		"title": "Battlefield 4",
+		"year": "2012",
+		"price": "50",
+		"category": "Ação",
+		"__v": 0
+	},
+	{
+		"_id": "620ac7ea10540f7886824421",
+		"title": "Sea of Thievs",
+		"year": "2018",
+		"price": "80",
+		"category": "Aventura",
+		"__v": 0
+	}
 ]
 ~~~
 
-Caso não aconteça alguma resposta, o motivo pode ser:
-* Token inválido
+> GET /games/:id
 
----
-
-> POST /auth
-
-Esse endpoint é respónsavel fazer o processo de autenticação.
+Esse endpoint é respónsavel por pegar apenas um game presente no database.
 
 Parametros:
 ~~~javascript
-{"user": "username", "password": "password"}
+URL = http://localhost:3000/game/620ac7d610540f788682441f
 ~~~
 
 Exemplo de respostas:
 
 ~~~javascript
 {
-  "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlciI..."
+	"_id": "620ac7d610540f788682441f",
+	"title": "Battlefield 4",
+	"year": "2012",
+	"price": "50",
+	"category": "Ação",
+	"__v": 0
 }
 ~~~
 
-Caso não aconteça alguma resposta, o motivo pode ser:
-* Usuário incorreto
-* Senha incorreta
+> PUT /game/:id
+
+Esse endpoint é respónsavel por atualizar um game presente no database.
+
+Parametros:
+~~~javascript
+URL = http://localhost:3000/game/620ac7d610540f788682441f
+~~~
+
+~~~javascript
+{
+	"title": "Battlefield 4",
+	"year": "2012",
+	"price": "90",
+	"category": "Ação",
+	"__v": 0
+}
+~~~
+
+Exemplo de respostas:
+
+~~~javascript
+HTTP Status Code: 200 OK
+~~~
+
+> DEL /game/:id
+
+Esse endpoint é respónsavel por atualizar um game presente no database.
+
+Parametros:
+~~~javascript
+URL = http://localhost:3000/game/620ac7d610540f788682441f
+~~~
+
+Exemplo de respostas:
+
+~~~javascript
+HTTP Status Code: 200 OK
+~~~
+
+
