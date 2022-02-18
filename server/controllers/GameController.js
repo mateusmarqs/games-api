@@ -18,11 +18,9 @@ router.get('/game/:id', (req, res) => {
         .catch(() => res.status(400).send({ error: 'O jogo não foi encontrado' }))
 })
 
-router.post('/game', (req, res) => {
+router.post('/create/game', (req, res) => {
 
     var { title, year, price, category  } = req.body
-
-    console.log(title)
 
     const game = new Game({
         title,
@@ -38,16 +36,16 @@ router.post('/game', (req, res) => {
     res.sendStatus(200)
 })
 
-router.delete('/game/:id', (req, res) => {
+router.delete('/delete/game/:id', (req, res) => {
 
     const id = req.params.id
     
     Game.findByIdAndDelete(id)
-        .then(() => res.status(200))
+        .then(() => res.send({ message: `O jogo de id: ${id} foi deletado com sucesso.` }))
         .catch(() => res.status(400).send({ error: 'o ID do jogo informado não foi encontrado.' }))
 })
 
-router.put('/game/:id', (req, res) => {
+router.put('/update/game/:id', (req, res) => {
     var id = req.params.id
     var { title, year, price, category } = req.body
 
@@ -57,7 +55,7 @@ router.put('/game/:id', (req, res) => {
         price,
         category
     })
-        .then(() => res.status(200))
+        .then(() => res.send({ message: `O jogo de id: ${id} foi atualizado com sucesso.`  }))
         .catch(() => res.status(400).send({ error: 'o ID do jogo informado não foi encontrado.' }))
 
 })
